@@ -2,52 +2,75 @@
 <html lang="pt">
     <head>
         <meta charset="UTF-8">
-        
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="icon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wordle</title>
     </head>
     <body>
         <header>
-
-                <button id="stats">Estatísticas</button>
-                <div class="game-start">
-                <button id="start-again">Reiniciar Jogo</button>
-            
-        </div>
+            <div class="centro">
+                <h1>Wordle</h1>
+            </div>
+                
+                <div class="btns">
+                    <button id="stats" onclick="mostrarOverlayEstatisticas()"><img src="./stats.png" alt="Gráfico Estatísticas" height="15" width="15"></button>
+                    <div class="game-start">
+                    <button id="start-again" onclick="reiniciarJogo()">Reiniciar Jogo</button>
+                </div>
+                
         </header>
+        
         <div id="overlay" class="overlay">
             <div class="overlay-content">
                 <button onclick="fecharOverlay()" class="fechar">✖</button>
-                <h2>Parabéns, você ganhou!</h2>
+                <h2>Parabéns, acertou!</h2>
                 <h3>Estatísticas</h3>
                 <div  class="estatisticas">
-                    <p>Total de jogos: <span id="jogos">0</span></p>
-                    <p>Vitórias: <span id="vitorias">0</span></p>
-                    <p>Derrotas: <span id="derrotas">0</span></p>
-                    <p>Série atual: <span id="streak">0</span></p>
-                    <p>Melhor série: <span id="maxStreak">0</span></p>
+                    <div><p>Total de jogos: <span id="jogos">0</span></p></div>
+                    <div><p>Vitórias: <span id="vitorias">0</span></p></div>
+                    <div><p>Derrotas: <span id="derrotas">0</span></p></div>
+                    <div><p>Série atual: <span id="streak">0</span></p></div>
+                    <div><p>Melhor série: <span id="maxStreak">0</span></p></div>
                 </div>
                 <div> 
-                    <button class="jogar-novamente" onclick="reiniciarJogo()">Jogar Outravez</button>
+                    <button class="jogar-novamente" onclick="jogarNovamente()">Jogar Outravez</button>
                 </div>
             </div>
         </div>
-        
+        <div id="mensagem"></div>
         <div id="overlay-estatisticas" class="overlay">
             <div class="overlay-content">
                 <div class="overlay-header">  
-                    <h2>Estatísticas</h2>
-                    <button onclick="fecharOverlayEstatisticas()">✖</button>
+                    <h2 class="centro">Estatísticas</h2>
+                    <button onclick="fecharOverlayEstatisticas()" class="fechar">✖</button>
                 </div>
-                <p>Total de jogos: <span id="jogos">0</span></p>
-                <p>Vitórias: <span id="vitorias">0</span></p>
-                <p>Derrotas: <span id="derrotas">0</span></p>
-                <p>Série atual: <span id="streak">0</span></p>
-                <p>Melhor série: <span id="maxStreak">0</span></p>
+                <div class="estatisticas">
+                    <div><p>Jogos: <span id="jogos-estat">0</span></p></div>
+                    <div><p>Vitórias: <span id="vitorias-estat">0</span></p></div>
+                    <div><p>Derrotas: <span id="derrotas-estat">0</span></p></div>
+                    <div><p>Série atual: <span id="streak-estat">0</span></p></div>
+                    <div><p>Melhor série: <span id="maxStreak-estat">0</span></p></div>
+                </div>
+                <button class="jogar-novamente" onclick="resetEstatisticas()">Reset</button>
             </div>
         </div>
-
+        <div id="overlay-derrota" class="overlay">
+            <div class="overlay-content">
+                <button onclick="fecharOverlayDerrota()" class="fechar">✖</button>
+                <h2>Que pena!</h2>
+                <h3>A palavra era: <span id="palavra-correta">XXXXX</span></h3>
+                <div class="estatisticas">
+                    <div><p>Jogos: <span id="jogos-loss">0</span></p></div>
+                    <div><p>Vitórias: <span id="vitorias-loss">0</span></p></div>
+                    <div><p>Derrotas: <span id="derrotas-loss">0</span></p></div>
+                    <div><p>Série atual: <span id="streak-loss">0</span></p></div>
+                    <div><p>Série máxima: <span id="maxStreak-loss">0</span></p></div>
+                </div>
+                <button class="jogar-novamente" onclick="reiniciarJogo()">Tentar Outra Vez</button>
+            </div>
+        </div>
+        
         <div>
             <table>
                 <tr>
@@ -94,6 +117,12 @@
                 </tr>
             </table>
         </div>
+
+        <div id="container-continuar-jogo" style="display: none; margin: 10px;">
+            <button id="continuar-jogo" onclick="jogarNovamente()">Continuar a Jogar</button>
+        </div>
+        
+
         <div id="keyboard">
             <div>
                 <button type="button">Q</button>
