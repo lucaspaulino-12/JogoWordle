@@ -319,15 +319,15 @@ td.flip {
   }
 
   #keyboard button {
-    padding: 10px;
+    padding: 11px;
     font-size: 0.8rem;
     min-width: 30px;
     min-height: 40px;
   }
 
   table {
-    width: auto;
-    height: auto;
+    width: 30px;
+    height: 30px;   
   }
 
   td {
@@ -357,11 +357,17 @@ td.flip {
     font-size: 1.3rem;
   }
 
-  #start-again,
-  #stats {
+  #start-again{
+    padding: 5px 10px;
     height: 2rem;
     font-size: 0.8rem;
-    padding: 5px 10px;
+  }
+  
+  #stats {
+    height: 2rem;
+    width: 2rem;
+    font-size: 0.8rem;
+    padding: 10px;
 
   }
 
